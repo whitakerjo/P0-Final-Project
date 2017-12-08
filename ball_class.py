@@ -21,9 +21,11 @@ class Ball:
             self.cody.penup()
             self.nim.ball_list.remove(self)
             self.cody.goto(10000, 10000)
-            self.nim.ball_track.append(self.nim.ball_track[-1] - self.nim.user_clicks)
+            self.nim.ball_track.append(self.nim.ball_list[-1] - self.nim.user_clicks)
 
     def draw_ball(self, x, y):
+        wn = turtle.Screen()
+        wn.screensize(1200, 760, "blue")
         self.cody.pencolor("yellow")
         self.cody.penup()
         self.cody.goto(x, y)
@@ -35,13 +37,13 @@ class Ball:
         self.cody.forward(60)
         self.cody.pendown()
         self.cody.end_fill()
-            # if balls > 15:
-            #     self.cody.begin_fill()
-            #     self.cody.circle(25)
-            #     self.cody.penup()
-            #     self.cody.forward(60)
-            #     self.cody.pendown()
-            #     self.cody.end_fill()
+        #if self.draw_ball > 15:
+                # self.cody.begin_fill()
+                # self.cody.circle(25)
+                # self.cody.penup()
+                # self.cody.forward(60)
+                # self.cody.pendown()
+                # self.cody.end_fill()
 
 
 
@@ -50,8 +52,8 @@ class Ball:
 #     wn = turtle.Screen()
 #     wn.screensize(1200, 760, "blue")
 #
-#     ball = Ball()
-#     balls = int(input("Please pick a number of balls to play with."))
+#
+
 #     ball.draw_balls(balls)
 #
 #     wn.exitonclick()
