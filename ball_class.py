@@ -19,9 +19,9 @@ class Ball:
             self.nim.user_clicks += 1
             self.nim.check_num_clicks()
             self.cody.penup()
-            self.nim.ball_list.remove(self)
-            self.cody.goto(10000, 10000)
-            self.nim.ball_track.append(self.nim.ball_list[-1] - self.nim.user_clicks)
+            # self.nim.ball_list.remove(self)
+            self.cody.goto(1000, 1000)
+
 
     def draw_ball(self, x, y):
         wn = turtle.Screen()
