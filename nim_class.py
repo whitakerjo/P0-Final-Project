@@ -27,25 +27,31 @@ class Nim:
         #a = input("Is your turn over?")
 
     def computer_turn(self):
-        for i in range (4, -1, -1):
-            if self.num_balls % 5 == i:
+        for i in range (4, -1, -1):             # Tries to take right number of balls using modulus (makes game smart)
+            if self.num_balls % 5 == i:         # Determines number to take
+                # print("Mod passed: ", i)
                 if i == 0:
+                    # Take random
                     pass
                 else:
-                    print(i)
-                    count = 0
-                    for ball in self.ball_list:
-                        for i in range(self.num_balls):
-                            if ball.am_I_clicked == False:
-                                ball.leave_screen(100, 100)
+                    count = 0                   # count is the number of balls removed. Want to take i balls
+                    for ball in self.ball_list:         # Go through every ball to see if it's been clicked yet
+                        # print("Length: ", len(self.ball_list))
+                        # print("Ball state: ", ball.am_I_clicked)
+                        # for j in range(self.num_balls): # Take the number of balls not clicked
+                        if ball.am_I_clicked == False:      # if balls not clicked
+                            # print(i, count)
+                            ball.leave_screen(100, 100)     # Make it leave
                                 # ball = self.num_balls
                                 # if ball <= 4:
                                 #     for i in range(ball):
-                                #ball.am_I_clicked = True
-                                count += 1
-                                if count == i:
-                                    break
-
+                            ball.am_I_clicked = True    # set as clicked
+                            # print("Count: ", count)
+                            count += 1
+                            if count == i:
+                                # print("Taken enough balls")
+                                break
+                    break
 
     def end_turn(self):
         if self.user_clicks > 0:
@@ -61,9 +67,13 @@ class Nim:
             # Computer's turn
 
     def create_balls(self):
+        last_pos = (-200, -200)
         for i in range(self.num_balls):
             b = Ball(self)
-            b.draw_ball(random.randint(-200, 200), random.randint(-200, 200))
+            b.draw_ball(last_pos[0], last_pos[1])
+            last_pos = (last_pos[0] + 50, last_pos[1])
+            if last_pos[0] > 400:
+                last_pos = (-200, last_pos[1]+50)
             self.ball_list.append(b)
 
     def introduce_user(self):                                                                  #introduces the user to the game and rules
