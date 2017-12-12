@@ -20,12 +20,13 @@ class Ball:
             self.nim.check_num_clicks()
             self.cody.penup()
             # self.nim.ball_list.remove(self)
-            self.cody.goto(1000, 1000)
+            self.cody.goto(100, 100)
 
 
     def draw_ball(self, x, y):
         wn = turtle.Screen()
         wn.screensize(1200, 760, "blue")
+        self.cody.speed(0)
         self.cody.pencolor("yellow")
         self.cody.penup()
         self.cody.goto(x, y)
