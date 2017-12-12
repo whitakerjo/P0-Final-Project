@@ -20,22 +20,23 @@ class Nim:
         self.your_turn = True
 
     def user_turn(self):
-        # if len(self.ball_list) == 0:
-        #     input("The computer has won.")
-        #     exit()
-        print("pt" + str(self.user_clicks))
         while self.user_clicks < 4 or self.user_clicks > -1:  # while loop that works until user picks 1-4 balls
             break
         if self.user_clicks == 4:
+            if len(self.ball_list) == 0:
+                print("The computer has won.")
+                #exit()
             return 0
             # a = input("Is your turn over?")
+        if len(self.ball_list) == 0:
+            print("The computer has won.")
+            #exit()
+
 
     def computer_turn(self):
-        # if len(self.ball_list) == 0:
-        #     input("The player has won.")
-        #     exit()
-        print("ct" + str(self.user_clicks))
         self.user_clicks = 0
+        if len(self.ball_list) == 0:
+            print("The player has won.")
         for i in range(4, -1, -1):  # Tries to take right number of balls using modulus (makes game smart)
             if self.num_balls % 5 == i:  # Determines number to take
                 # print("Mod passed: ", i)
