@@ -3,20 +3,13 @@ import time
 import turtle
 from ball_class import *
 
-
 class Nim:
     def __init__(self):
         self.user_clicks = 0
         self.num_balls = 0
         self.winner = ""
-        # self.introduce_user()
         self.wn = turtle.Screen()
         self.ball_list = []
-        # self.create_balls()
-        # self.wn.onkey(self.end_turn , "e")
-        # always last!
-        # self.wn.listen()
-        # self.wn.mainloop()
         self.your_turn = True
 
     def user_turn(self):
@@ -25,13 +18,9 @@ class Nim:
         if self.user_clicks == 4:
             if len(self.ball_list) == 0:
                 print("The computer has won.")
-                #exit()
             return 0
-            # a = input("Is your turn over?")
         if len(self.ball_list) == 0:
             print("The computer has won.")
-            #exit()
-
 
     def computer_turn(self):
         self.user_clicks = 0
@@ -39,7 +28,6 @@ class Nim:
             print("The player has won.")
         for i in range(4, -1, -1):  # Tries to take right number of balls using modulus (makes game smart)
             if self.num_balls % 5 == i:  # Determines number to take
-                # print("Mod passed: ", i)
                 if i == 0:
                     count1 = 0
                     count = random.randint(1,4)
@@ -55,20 +43,11 @@ class Nim:
                 else:
                     count = 0  # count is the number of balls removed. Want to take i balls
                     for ball in self.ball_list:  # Go through every ball to see if it's been clicked yet
-                        # print("Length: ", len(self.ball_list))
-                        # print("Ball state: ", ball.am_I_clicked)
-                        # for j in range(self.num_balls): # Take the number of balls not clicked
-                        if ball.am_I_clicked == False:  # if balls not clicked
-                            # print(i, count)
-                            ball.leave_screen(100, 100)  # Make it leave
-                            # ball = self.num_balls
-                            # if ball <= 4:
-                            #     for i in range(ball):
-                            ball.am_I_clicked = True  # set as clicked
-                            # print("Count: ", count)
+                       if ball.am_I_clicked == False:
+                            ball.leave_screen(100, 100)
+                            ball.am_I_clicked = True
                             count += 1
                             if count == i:
-                                # print("Taken enough balls")
                                 break
                     self.user_clicks = 0
                     break
@@ -96,17 +75,16 @@ class Nim:
             self.ball_list.append(b)
 
     def introduce_user(self):  # introduces the user to the game and rules
-        #delay = 2.0
-        #Print("Hello! Today you will be playing the game of Nim.")
-        #time.sleep(delay)
-        #print("Here are the rules:")
-        #time.sleep(delay // 2)
-        #print("1. You will get to choose how many balls to play with.")
-        #time.sleep(delay // 2)
-        #print("2. You can pick up 1 to 4 balls per turn. You and the computer will take turns picking up balls.")
-        #time.sleep(delay // 2)
-        #print("3. You will go first. The goal is to have the last ball(s).")
-        #time.sleep(delay)
-        #print(
-         #   "4. To play, simply click the number of balls you want to take on your turn. When you're done, hit space to confirm the computer turn.")
+        delay = 2.0
+        print("Hello! Today you will be playing the game of Nim.")
+        time.sleep(delay)
+        print("Here are the rules:")
+        time.sleep(delay // 2)
+        print("1. You will get to choose how many balls to play with.")
+        time.sleep(delay // 2)
+        print("2. You can pick up 1 to 4 balls per turn. You and the computer will take turns picking up balls.")
+        time.sleep(delay // 2)
+        print("3. You will go first. The goal is to have the last ball(s).")
+        time.sleep(delay)
+        print("4. To play, simply click the number of balls you want to take on your turn. When you're done, hit space to confirm the computer turn.")
         self.num_balls = int(input("How many balls do you want to play with (more than 15)?"))  # return the value of x when it's not equal to zero

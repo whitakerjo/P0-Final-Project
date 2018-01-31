@@ -19,7 +19,6 @@ class Ball:
             self.nim.user_clicks += 1
             self.nim.check_num_clicks()
             self.cody.penup()
-            # self.nim.ball_list.remove(self)
             self.cody.goto(100, 100)
 
 
@@ -31,36 +30,12 @@ class Ball:
         self.cody.penup()
         self.cody.goto(x, y)
         self.cody.pendown()
-        # for balls in range(balls):
         self.cody.begin_fill()
         self.cody.circle(25)
         self.cody.penup()
         self.cody.forward(60)
         self.cody.pendown()
         self.cody.end_fill()
-        #if self.draw_ball > 15:
-                # self.cody.begin_fill()
-                # self.cody.circle(25)
-                # self.cody.penup()
-                # self.cody.forward(60)
-                # self.cody.pendown()
-                # self.cody.end_fill()
-
-
-
-
-# def main():
-#     wn = turtle.Screen()
-#     wn.screensize(1200, 760, "blue")
-#
-#
-
-#     ball.draw_balls(balls)
-#
-#     wn.exitonclick()
-#
-# main()
-
 
 
 
